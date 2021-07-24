@@ -1,0 +1,62 @@
+<link href="../css/login.css" rel="stylesheet">
+<body>
+   <div ng-show="alert" id="alert" class="alert" role="alert"> {{alertMessage}} </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6 p-0 pt-3">
+            <img src="../images/hpe-cds-logo-142-97.png" alt="Italian Trulli">
+            <h3 class="text-center pt-3">Log in to CDS-Twitter</h3>
+            <form class="myformregister" name="myformregister" ng-submit="register()" validate>
+               <div class="mb-3 bg-color">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username" ng-model="username" required class="input">
+                  <div ng-show="myformregister.$submitted || myformregister.username.$touched">
+                     <div ng-show="myformregister.username.$error.required">Tell us your name.</div>
+                  </div>
+               </div>
+               <div class="mb-3 bg-color">
+                  <label>Email</label>
+                  <input type="email" class="form-control" name="email" ng-model="email" required class="input">
+                  <div ng-show="myformregister.$submitted || myformregister.email.$touched">
+                     <span ng-show="myformregister.email.$error.required">Tell us your email.</span>
+                     <span ng-show="myformregister.email.$error.email">This is not a valid email.</span>
+                  </div>
+               </div>
+               <div class="mb-3 bg-color">
+                  <label>Full name</label>
+                  <input type="text" class="form-control" name="fullname" ng-model="fullname" required class="input">
+                  <div ng-show="myformregister.$submitted || myformregister.fullname.$touched">
+                     <span ng-show="myformregister.fullname.$error.required">Tell us your fullname.</span>
+                  </div>
+               </div>
+               <div class="mb-3 bg-color">
+                  <label>Avatar url</label>
+                  <input type="text" class="form-control" name="avatar" ng-model="avatar" class="input">
+               </div>
+               <div class="mb-3 bg-color">
+                  <label>Password</label>
+                  <input type="password" class="form-control" name="password1" ng-model="password1" required class="input">
+                  <div ng-show="myformregister.$submitted || myformregister.password1.$touched">
+                     <span ng-show="myformregister.password1.$error.required">Password requiered.</span>
+                  </div>
+               </div>
+               <div class="mb-3 bg-color">
+                  <label>Confirm password</label>
+                  <input type="password" class="form-control" name="password2" ng-model="password2" required class="input">
+                  <div ng-show="myformregister.$submitted || myformregister.password2.$touched">
+                     <span ng-show="myformregister.password2.$error.required">Password requiered.</span>
+                  </div>
+               </div>
+               <button type="submit" class="btn btn-custom btn-lg btn-block mt-3">Register</button>
+               <div class="text-center pt-3 pb-3">
+                  <a href="#" class="">Forgotten password?</a>
+                  <br>
+                  <a href="#/login" class="">Log in CDSTwitter</a>
+               </div>
+            </form>
+         </div>
+         <div class="col-md-3"></div>
+      </div>
+   </div>
+</body>

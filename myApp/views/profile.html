@@ -1,0 +1,162 @@
+<link rel='stylesheet' href='../css/profile.css'>
+<link rel='stylesheet' href='../css/messages/globalstyles.css'>
+<link rel='stylesheet' href='../css/messages/header.css'>
+<link rel='stylesheet' href='../css/messages.css'>
+<body>
+
+   <div ng-show="alert" id="alert" class="alert" role="alert"> {{alertMessage}} </div>
+   
+   <header id="main-header">
+      <div class="wrapper">
+         <nav class="col-md-4">
+            <ul>
+               <li>
+                  <a href="/#/">
+                     <img src="../images/messages/home.svg" alt="home"/>
+                     <p>Home</p>
+                  </a>
+               </li>
+               <li>
+                  <a href="/">
+                     <img src="../images/messages/notification.svg" alt="notifications"/>
+                     <p>Notifications</p>
+                  </a>
+               </li>
+               <li>
+                  <a href="/">
+                     <img src="../images/messages/message.svg" alt="messages"/>
+                     <p>Messages</p>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+         <div>
+            <img src="../images/messages/logo.svg" alt="Logo Twitter"/>
+         </div>
+         <section class="main-header-right-side">
+            <input type="text" placeholder="Search Twitter"/>
+            <a href="#/profile">
+            <img ng-if="user.avatar" src="{{user.avatar}}" alt="Avatar"/>
+            <img ng-if="!user.avatar" src="../images/egg_avatar.jpg" alt="Avatar"/>
+            </a>
+            <button ng-click="deslog()" class="btn btn-link btn-sm logout">
+            <span class="fa fa-window-close"></span>
+            </button>
+         </section>
+      </div>
+   </header>
+   <br><br><br><br><br><br><br>
+   <section class="main-content wrapper col-md-12">
+      <div class="container">
+      <div class="row justify-content-md-center">
+         <div class="col-md-10">
+            <div class="twPc-div">
+               <a class="twPc-bg twPc-block">
+                  <p class="description">
+                     {{description}}
+                  </p>
+               </a>
+               <div>
+                  <a title="{{user.fullname}}" href="" class="twPc-avatarLink">
+                  <img  ng-if="user.avatar" alt="{{user.fullname}}" src="{{user.avatar}}" class="twPc-avatarImg">
+                  <img  ng-if="!user.avatar" alt="{{user.fullname}}"  src="../images/egg_avatar.jpg" class="twPc-avatarImg">
+                  </a>
+                  <div class="twPc-divUser">
+                     <div class="twPc-divName">
+                        <a ng-model="username" href="">{{fullname}}</a>
+                     </div>
+                     <span>
+                     <a href="">@<span ng-model="username">{{username}}</span></a>
+                     </span>
+                  </div>
+                  <div class="twPc-divStats">
+                     <ul class="twPc-Arrange">
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="n" title="9.840 Tweet">
+                           <span class="twPc-StatLabel twPc-block">Tweets</span>
+                           <span class="twPc-StatValue">{{user.messagesId.length}}</span>
+                           </a>
+                        </li>
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="" title="885 Following">
+                           <span class="twPc-StatLabel twPc-block">Following</span>
+                           <span class="twPc-StatValue"> {{follows.length}} </span>
+                           </a>
+                        </li>
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="" title="1.810 Followers">
+                           <span class="twPc-StatLabel twPc-block">Likes</span>
+                           <span class="twPc-StatValue">{{user.likes.length}}</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <br><br>
+         </div>
+      </div>
+      <div class="row justify-content-md-center">
+         <div class="col-md-5">
+            <form class="userinfoform" name="userinfoform" ng-submit="save()">
+               <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text" id="inputGroup-sizing-sm">@</span>
+                  </div>
+                  <input ng-model="username" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+               </div>
+               <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                     <span class="fa fa-hashtag input-group-text" id="inputGroup-sizing-sm"></span>
+                  </div>
+                  <input ng-model="fullname" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+               </div>
+               <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                     <span class="fa fa-info input-group-text" id="inputGroup-sizing-sm"></span>
+                  </div>
+                  <input ng-model="description" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+               </div>
+               <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                     <span class="fa fa-camera input-group-text" id="inputGroup-sizing-sm"></span>
+                  </div>
+                  <input ng-model="avatar" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="New avatar url">
+               </div>
+               <button type="submit" class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark">Save</button>
+            </form>
+         </div>
+      </div>
+      <br><br><br><br>
+      <i><em><span class=" row justify-content-md-center  follows">Following</span></em></i>
+      <br><br>
+      <div  class="row justify-content-md-center col-md-12">
+         <div class="row justify-content-md-center col-md-3" ng-repeat="follow in follows">
+            <div class="">
+               <div class="twPc-div">
+                  <a class="twPc-bg twPc-block">
+                     <p class="description">
+                        {{follow.description}}
+                     </p>
+                  </a>
+                  <div>
+                     <a title="{{user.fullname}}" href="" class="twPc-avatarLink">
+                     <img  ng-if="follow.avatar" alt="{{follow.fullname}}" src="{{follow.avatar}}" class="twPc-avatarImg">
+                     <img  ng-if="!follow.avatar" alt="{{follow.fullname}}"  src="../images/egg_avatar.jpg" class="twPc-avatarImg">
+                     </a>
+                     <div class="twPc-divUser">
+                        <div class="twPc-divName">
+                           <a ng-model="username" href="">{{follow.fullname}}</a>
+                        </div>
+                        <span>
+                        <a href="">@<span ng-model="username">{{follow.username}}</span></a>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               <br><br>
+            </div>
+         </div>
+      </div>
+   </section>
+</body>

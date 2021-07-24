@@ -1,0 +1,110 @@
+body {
+   font-family: "Nunito Sans";
+}
+
+.login-form {
+   padding: 25px;
+}
+
+h3 {
+   padding-left: 30px;
+   padding-right: 20px;
+   font-weight: 700;
+   color: #025642;
+}
+
+label {
+   padding-top: 4px;
+   padding-left: 4px;
+}
+
+.bg-color {
+   background-color: rgb(245, 248, 250);
+}
+
+.bg-color:hover label {
+   color: #025642;
+}
+
+.btn-custom {
+   background-color: #00B388;
+   border: none;
+   border-radius: 6px;
+   font-size: 20px;
+   line-height: 28px;
+   color: #fff;
+   font-weight: 700;
+   height: 48px;
+}
+
+.btn-custom {
+   color: #fff !important;
+   background-color: #00B388;
+}
+
+.form-control {
+   border: 0px;
+   background-color: rgb(245, 248, 250);
+   border-bottom: 2px solid #657786;
+   padding: 0px 4px 0px 4px;
+   min-height: 20px;
+}
+
+.form-control:focus {
+   box-shadow: none;
+   background-color: rgb(245, 248, 250);
+   border-color: #025642;
+}
+
+.fa {
+   color: #00B388;
+   margin: 0 auto;
+   display: block;
+   text-align: center;
+   font-size: 50px;
+}
+
+img {
+   color: #00B388;
+   margin: 0 auto;
+   display: block;
+   text-align: center;
+   font-size: 50px;
+}
+
+a {
+   text-decoration: none;
+   color: #00B388;
+}
+
+a:hover {
+   text-decoration: underline;
+   color: #025642;
+}
+
+
+.input-group-addon.primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+}
+.input-group-addon.success {
+    color: rgb(255, 255, 255);
+    background-color: rgb(92, 184, 92);
+    border-color: rgb(76, 174, 76);
+}
+.input-group-addon.info {
+    color: rgb(255, 255, 255);
+    background-color: rgb(57, 179, 215);
+    border-color: rgb(38, 154, 188);
+}
+.input-group-addon.warning {
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 173, 78);
+    border-color: rgb(238, 162, 54);
+}
+.input-group-addon.danger {
+    color: rgb(255, 255, 255);
+    background-color: rgb(217, 83, 79);
+    border-color: rgb(212, 63, 58);
+}

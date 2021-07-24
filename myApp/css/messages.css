@@ -1,0 +1,20 @@
+.modal-content{
+	background-color: #15202B;
+}
+.modal-body{
+	background-color: #15202B;
+}
+.modal-footer{
+	background-color: #15202B;
+	border-top:  1px solid #dee2e6;
+
+}
+
+.tweet_message{
+	border-radius: 10px 30px 45px 60px;
+}
+
+.addImage{
+ padding: .375rem .75rem;
+     margin-top: 4px;
+}

@@ -1,0 +1,134 @@
+<link rel='stylesheet' href='../css/profile.css'>
+<link rel='stylesheet' href='../css/messages/globalstyles.css'>
+<link rel='stylesheet' href='../css/messages/header.css'>
+<link rel='stylesheet' href='../css/messages.css'>
+<body>
+
+   <header id="main-header">
+      <div class="wrapper">
+         <nav class="col-md-4">
+            <ul>
+               <li>
+                  <a href="/#/">
+                     <img src="../images/messages/home.svg" alt="home"/>
+                     <p>Home</p>
+                  </a>
+               </li>
+               <li>
+                  <a href="/">
+                     <img src="../images/messages/notification.svg" alt="notifications"/>
+                     <p>Notifications</p>
+                  </a>
+               </li>
+               <li>
+                  <a href="/">
+                     <img src="../images/messages/message.svg" alt="messages"/>
+                     <p>Messages</p>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+         <div>
+            <img src="../images/messages/logo.svg" alt="Logo Twitter"/>
+         </div>
+         <section class="main-header-right-side">
+            <input type="text" placeholder="Search Twitter"/>
+            <a href="#/profile">
+            <img ng-if="user.avatar" src="{{user.avatar}}" alt="Avatar"/>
+            <img ng-if="!user.avatar" src="../images/egg_avatar.jpg" alt="Avatar"/>
+            </a>
+            <button ng-click="deslog()" class="btn btn-link btn-sm logout">
+            <span class="fa fa-window-close"></span>
+            </button>
+         </section>
+      </div>
+   </header>
+   <br><br><br><br><br><br><br>
+   <section class="main-content wrapper col-md-12">
+      <div class="container">
+      <div class="row justify-content-md-center">
+         <div class="col-md-10">
+            <div class="twPc-div">
+               <a class="twPc-bg twPc-block">
+                  <p class="description">
+                     {{description}}
+                  </p>
+               </a>
+               <div>
+                  <a title="{{userfromdb.fullname}}" href="" class="twPc-avatarLink">
+                  <img  ng-if="userfromdb.avatar" alt="{{userfromdb.fullname}}" src="{{userfromdb.avatar}}" class="twPc-avatarImg">
+                  <img  ng-if="!userfromdb.avatar" alt="{{userfromdb.fullname}}"  src="../images/egg_avatar.jpg" class="twPc-avatarImg">
+                  </a>
+                  <div class="twPc-divUser">
+                     <div class="twPc-divName">
+                        <a ng-model="username" href="">{{userfromdb.fullname}}</a>
+                     </div>
+                     <span>
+                     <a href="">@<span ng-model="username">{{userfromdb.username}}</span></a>
+                     </span>
+                  </div>
+                  <div class="twPc-divStats">
+                     <ul class="twPc-Arrange">
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="n" title="9.840 Tweet">
+                           <span class="twPc-StatLabel twPc-block">Tweets</span>
+                           <span class="twPc-StatValue">{{userfromdb.messagesId.length}}</span>
+                           </a>
+                        </li>
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="" title="885 Following">
+                           <span class="twPc-StatLabel twPc-block">Following</span>
+                           <span class="twPc-StatValue"> {{userfromdb.follows.length}} </span>
+                           </a>
+                        </li>
+                        <li class="twPc-ArrangeSizeFit">
+                           <a href="" title="1.810 Followers">
+                           <span class="twPc-StatLabel twPc-block">Likes</span>
+                           <span class="twPc-StatValue">{{userfromdb.likes.length}}</span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <br><br>
+         </div>
+      </div>
+     
+      <br><br><br><br>
+      <i><em><span class=" row justify-content-md-center  follows">All users</span></em></i>
+      <br><br>
+      <div  class="row justify-content-md-center col-md-12">
+
+         <div class="row justify-content-md-center col-md-3" ng-repeat="alluser in allusers">
+            <div class="">
+               <div class="twPc-div">
+                  <a class="twPc-bg twPc-block">
+                     <p class="description">
+                        {{alluser.description}}
+                     </p>
+                  </a>
+                  <div>
+                     <a title="{{alluser.fullname}}" href="" class="twPc-avatarLink">
+                     <img  ng-if="alluser.avatar" alt="{{alluser.fullname}}" src="{{alluser.avatar}}" class="twPc-avatarImg">
+                     <img  ng-if="!alluser.avatar" alt="{{alluser.fullname}}"  src="../images/egg_avatar.jpg" class="twPc-avatarImg">
+                     </a>
+                     <div class="twPc-divUser">
+                        <div class="twPc-divName">
+                           <a ng-model="username" href="">{{alluser.fullname}}</a>
+                        </div>
+                        <span>
+                        <a href="">@<span ng-model="username">{{alluser.username}}</span></a>
+                        </span>
+                     </div>
+
+                        <a href="#/user/{{alluser.username}}"> Visit profile </a>
+                  </div>
+               </div>
+               <br><br>
+            </div>
+
+         </div>
+      </div>
+   </section>
+</body>
