@@ -47,24 +47,24 @@ myApp.service('UsersService',['$rootScope', '$location', '$http', '$log', functi
 
 
 
-        this.followUser = function(userid, followid){
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8081/api/v1/user/follow?userid=' + userid + '&followid=' + followid,
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json'
-                }
-              }).success(function(response) {
-                alert("User followed successfully.")
-                console.log("Follow saved successfully " + response);
-              })
-              .error(function(response) {
-                alert("User followed error.")
-                console.log('Follow error: ' + response.reason);
-              });
-
-        }
+    this.followUser = function(userid, followid){
+      var response = $http({
+            method: 'POST',
+            url: 'http://localhost:8081/api/v1/user/follow?userid=' + userid + '&followid=' + followid,
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            }
+          }).success(function(response) {
+            
+            console.log("Follow saved successfully " + response);
+          })
+          .error(function(response) {
+            alert("User followed error.")
+            console.log('Follow error: ' + response.reason);
+          });
+          return response;
+    }
 
 
 this.getUserFollows = function(userid){

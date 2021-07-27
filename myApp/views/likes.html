@@ -36,7 +36,7 @@
             <img src="../images/messages/logo.svg" alt="Logo Twitter"/>
          </div>
          <section class="main-header-right-side">
-            <input type="text" placeholder="Search Twitter"/>
+            <input type="text" ng-model="filterLikes" placeholder="Search Twitter" ng-model="searchT"/>
             <a href="#/profile">
             <img ng-if="user.avatar" src="{{user.avatar}}" alt="Avatar"/>
             <img ng-if="!user.avatar" src="../images/egg_avatar.jpg" alt="Avatar"/>
@@ -57,7 +57,7 @@
             <a class="active" href="/#/likes">Likes ({{messages.length}})</a>
          </nav>
          <ul>
-            <li ng-repeat="message in messages">
+            <li ng-repeat="message in messages | orderBy: 'date':true | limitTo:10 | filter:searchT">
                <a href="/">
                   <div class="tweet">
                      <div class="avatar">
@@ -108,15 +108,15 @@
                <h1>You might like</h1>
             </div>
             <ul>
-               <li ng-repeat="user in users | limitTo:3">
+               <li ng-repeat="userinusers in users | limitTo:3">
                   <a>
-                     <img ng-if="user.avatar" src="{{user.avatar}}" alt="@{{user.username}}"/>
-                     <img ng-if="!user.avatar" src="../images/egg_avatar.jpg" alt="@{{user.username}}"/>
+                     <img ng-if="userinusers.avatar" src="{{userinusers.avatar}}" alt="@{{userinusers.username}}"/>
+                     <img ng-if="!userinusers.avatar" src="../images/egg_avatar.jpg" alt="@{{userinusers.username}}"/>
                      <div>
-                        <strong>{{user.fullname}}</strong>
-                        <span>@{{user.username}}</span>
+                        <strong>{{userinusers.fullname}}</strong>
+                        <span>@{{userinusers.username}}</span>
                      </div>
-                     <button ng-click="follow(user._id)">Follow</button>
+                    <button ng-click="follow(userinusers._id)">Follow</button>
                   </a>
                </li>
                <li>

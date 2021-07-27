@@ -36,7 +36,7 @@
             <img src="../images/messages/logo.svg" alt="Logo Twitter"/>
          </div>
          <section class="main-header-right-side">
-            <input type="text" placeholder="Search Twitter"/>
+            <input type="text" placeholder="Search Twitter" ng-model="searchTrends"/>
             <a href="#/profile">
             <img ng-if="user.avatar" src="{{user.avatar}}" alt="Avatar"/>
             <img ng-if="!user.avatar" src="../images/egg_avatar.jpg" alt="Avatar"/>
@@ -48,9 +48,8 @@
          </section>
       </div>
    </header>
-
    <br><br><br><br><br><br><br>
-
+   <div ng-show="alert" id="alert" class="alert" role="alert"> {{alertMessage}} </div>
    <section class="main-content wrapper col-md-12">
       <article class="timeline col-md-8">
          <nav>
@@ -60,7 +59,7 @@
             <a href="#/likes">Likes</a>
          </nav>
          <ul>
-            <li ng-repeat="message in messages">
+            <li ng-repeat="message in messages | orderBy: 'date':true | limitTo:10 | filter:searchTrends">
                <a href="/">
                   <div class="tweet">
                      <div class="avatar">
@@ -132,9 +131,10 @@
          <div class="widget trends">
             <div>
                <h1>Trends</h1>
+             
             </div>
             <ul>
-               <li ng-repeat="hastag in hastags | limitTo:3 | orderBy: value ">
+               <li ng-repeat="hastag in hastags">
                   <a href="/">
                   <span>Academy · ({{hastag.value}})</span>
                   <strong>{{hastag.key}}</strong>

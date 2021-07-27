@@ -26,8 +26,15 @@ myApp.controller('MessagesController', ['$scope', '$rootScope', '$timeout', '$lo
          $scope.messages = data.data
     })
 
+
+
     $scope.follow = function(uuid) {
-        $UsersService.followUser(user._id, uuid);
+        var follow =  $UsersService.followUser(user._id, uuid);
+        follow.then(function(data) {
+            //Code after execute request
+            console.log("Follow successfully to " + uuid)
+        })
+       
     }
 
 
@@ -90,10 +97,6 @@ myApp.controller('MessagesController', ['$scope', '$rootScope', '$timeout', '$lo
         .error(function(response) {
             console.log('Get all hastag error: ' + response.message);
         });
-
-
-
-
 
 
         var shuffleArray = function(array) {
